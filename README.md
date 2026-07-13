@@ -44,3 +44,16 @@ Cada máquina fue configurada con dos interfaces de red:
 
 - Adaptador NAT para acceso a Internet.
 - Adaptador Red Interna para la comunicación entre ambos equipos.
+
+---
+
+## Configuración de red
+
+Se configuró una dirección IP estática en la interfaz correspondiente a la Red Interna mediante la herramienta 'nmtui'.
+
+| Equipo | Dirección IP |
+|---------|--------------|
+| ansible-controller | 192.168.100.10/24 |
+| webserver01 | 192.168.100.20/24 |
+
+La interfaz NAT permanece configurada mediante DHCP para proporcionar acceso a Internet durante la instalación de paquetes.
