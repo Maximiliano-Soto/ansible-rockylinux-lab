@@ -57,3 +57,20 @@ Se configuró una dirección IP estática en la interfaz correspondiente a la Re
 | webserver01 | 192.168.100.20/24 |
 
 La interfaz NAT permanece configurada mediante DHCP para proporcionar acceso a Internet durante la instalación de paquetes.
+
+## Configuración de acceso SSH
+
+Se creó un usuario dedicado (`ansible`) en ambos servidores para ejecutar las tareas de automatización.
+
+Posteriormente se generó un par de claves SSH utilizando el algoritmo Ed25519 en el nodo controlador y se copió la clave pública al nodo administrado mediante `ssh-copy-id`.
+
+Con esta configuración el controlador puede establecer conexiones SSH sin necesidad de ingresar una contraseña, requisito fundamental para la automatización con Ansible.
+
+### Evidencias
+
+- Creación del usuario `ansible`.
+- Servicio `sshd` en ejecución.
+- Acceso SSH inicial mediante contraseña.
+- Generación de claves SSH.
+- Copia de la clave pública.
+- Acceso SSH sin contraseña.
