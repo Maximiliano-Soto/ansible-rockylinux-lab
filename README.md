@@ -135,3 +135,22 @@ Finalmente, se ejecutó nuevamente el mismo playbook para demostrar la idempoten
 - Primera ejecución del playbook.
 - Verificación de la instalación.
 - Segunda ejecución del playbook (idempotencia).
+
+---
+
+## Gestión de servicios con Ansible
+
+En este módulo se automatizó la instalación y administración del servicio Apache HTTP Server utilizando los módulos `ansible.builtin.dnf` y `ansible.builtin.service`.
+
+El playbook instaló el paquete `httpd`, inició el servicio y lo configuró para iniciar automáticamente con el sistema operativo.
+
+Finalmente, se verificó el correcto funcionamiento del servicio y se comprobó nuevamente la idempotencia de Ansible ejecutando el playbook por segunda vez.
+
+### Evidencias
+
+- Creación del playbook `httpd.yml`.
+- Verificación del estado inicial del servicio.
+- Primera ejecución del playbook.
+- Verificación del servicio en ejecución.
+- Acceso a la página de bienvenida de Apache.
+- Segunda ejecución del playbook (idempotencia).
