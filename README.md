@@ -117,3 +117,21 @@ Finalmente, se volvió a ejecutar el mismo playbook para comprobar la **idempote
 - Primera ejecución del playbook.
 - Verificación del usuario creado.
 - Segunda ejecución del playbook (idempotencia).
+
+---
+
+## Automatización de la instalación de paquetes
+
+En este módulo se automatizó la instalación de herramientas de administración utilizando el módulo `ansible.builtin.dnf`.
+
+Se verificó inicialmente que los paquetes `htop`, `tmux` y `nmap` no estaban presentes en el servidor administrado. Posteriormente, se ejecutó el playbook para instalarlos y se comprobó su correcta instalación.
+
+Finalmente, se ejecutó nuevamente el mismo playbook para demostrar la idempotencia de Ansible. Como los paquetes ya estaban instalados, no fue necesario realizar modificaciones adicionales (`changed=0`).
+
+### Evidencias
+
+- Actualización del playbook `packages.yml`.
+- Verificación del estado inicial de los paquetes.
+- Primera ejecución del playbook.
+- Verificación de la instalación.
+- Segunda ejecución del playbook (idempotencia).
