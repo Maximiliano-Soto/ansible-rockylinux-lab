@@ -1,0 +1,12 @@
+---
+- name: Gestion de usuarios
+  hosts: webservers
+  become: true
+
+  tasks:
+    - name: Crear usuario desarrollador
+      ansible.builtin.user:
+        name: desarrollador
+        comment: Usuario creado mediante Ansible
+        shell: /bin/bash
+        state: present

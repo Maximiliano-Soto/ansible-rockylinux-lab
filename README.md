@@ -66,14 +66,20 @@ Posteriormente se generó un par de claves SSH utilizando el algoritmo Ed25519 e
 
 Con esta configuración el controlador puede establecer conexiones SSH sin necesidad de ingresar una contraseña, requisito fundamental para la automatización con Ansible.
 
+Adicionalmente, se configuró el usuario `ansible` con privilegios de `sudo` sin solicitud de contraseña (`NOPASSWD`) mediante un archivo ubicado en `/etc/sudoers.d/`. Esta configuración permite que Ansible ejecute tareas administrativas utilizando la directiva `become: yes` sin intervención manual.
+
+> **Nota:** La configuración `NOPASSWD` se implementó únicamente con fines de automatización dentro de este laboratorio. En entornos de producción debe aplicarse siguiendo las políticas de seguridad de la organización.
+
+
 ### Evidencias
 
 - Creación del usuario `ansible`.
-- Servicio `sshd` en ejecución.
+- Servicio `sshd` en ejecución.  
 - Acceso SSH inicial mediante contraseña.
-- Generación de claves SSH.
-- Copia de la clave pública.
+- Generación del par de claves SSH (Ed25519)
+- Copia de la clave pública con `ssh-copy-id`.
 - Acceso SSH sin contraseña.
+- Configuración de `sudo` sin contraseña para el usuario `ansible`.
 
 ---
 
@@ -93,3 +99,21 @@ En este módulo se preparó el servidor **ansible-controller** para administrar 
 Una vez configurado el inventario, se verificó la comunicación entre el nodo controlador y el nodo administrado utilizando el módulo `ping` de Ansible.
 
 La respuesta `SUCCESS` confirmó que el acceso mediante SSH y la configuración del inventario eran correctos, permitiendo la administración remota del servidor.
+
+---
+
+## Automatización de la gestión de usuarios
+
+En este módulo se utilizó el módulo `ansible.builtin.user` para crear automáticamente un usuario en el servidor administrado.
+
+Antes de ejecutar el playbook se verificó que el usuario no existía. Posteriormente se ejecutó el playbook y se confirmó su creación.
+
+Finalmente, se volvió a ejecutar el mismo playbook para comprobar la **idempotencia** de Ansible. Como el usuario ya existía, Ansible no realizó modificaciones adicionales (`changed=0`).
+
+### Evidencias
+
+- Creación del playbook `users.yml`.
+- Verificación inicial de que el usuario no existía.
+- Primera ejecución del playbook.
+- Verificación del usuario creado.
+- Segunda ejecución del playbook (idempotencia).

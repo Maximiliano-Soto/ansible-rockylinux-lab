@@ -1,0 +1,8 @@
+---
+- name: Primer playbook de validacion
+  hosts: webservers
+  become: true
+
+  tasks:
+    - name: Verificar conectividad con el servidor
+      ping:
