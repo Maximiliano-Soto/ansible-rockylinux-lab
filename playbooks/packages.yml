@@ -4,13 +4,10 @@
   become: true
 
   tasks:
-    - name: Instalar paquetes esenciales
+    - name: Instalar herramientas de administración
       ansible.builtin.dnf:
         name:
-          - vim
-          - git
-          - wget
-          - curl
-          - tree
-          - net-tools
+          - htop
+          - tmux
+          - nmap
         state: present
