@@ -74,3 +74,22 @@ Con esta configuración el controlador puede establecer conexiones SSH sin neces
 - Generación de claves SSH.
 - Copia de la clave pública.
 - Acceso SSH sin contraseña.
+
+---
+
+### Preparación del nodo controlador
+
+En este módulo se preparó el servidor **ansible-controller** para administrar equipos remotos mediante Ansible.
+
+### Actividades realizadas
+
+- Actualización del sistema.
+- Instalación del repositorio EPEL.
+- Instalación de Ansible.
+- Creación del archivo de inventario `hosts.ini`.
+
+### Verificación de conectividad
+
+Una vez configurado el inventario, se verificó la comunicación entre el nodo controlador y el nodo administrado utilizando el módulo `ping` de Ansible.
+
+La respuesta `SUCCESS` confirmó que el acceso mediante SSH y la configuración del inventario eran correctos, permitiendo la administración remota del servidor.
