@@ -1,0 +1,16 @@
+---
+- name: Instalacion de paquetes base
+  hosts: webservers
+  become: true
+
+  tasks:
+    - name: Instalar paquetes esenciales
+      ansible.builtin.dnf:
+        name:
+          - vim
+          - git
+          - wget
+          - curl
+          - tree
+          - net-tools
+        state: present
